@@ -1,0 +1,37 @@
+1.
+the heap stores every non-primitive type that is created at any part of the application, 
+those objects can be globally accessed.
+the stack stores only local primitive types and the references to the variables that are stored in the heap, A thread cannot access another thread's stack.
+
+2. the jvm can be split to 3 components:
+the class loader - which is responsible for loading .class files to the memory, it loads every class including the files we import.
+then, the linker verifies that the bytecode class files have no errors in them 
+and allocates memory for the default and static variables that are in the code.
+the linker also resolves and replaces the symbolic references with actual references.
+at the end, the initialization phase assigns values to the static variables.
+the runtime data area (JRE) - the JRE is responsible for handling the memory that the jvm needs memory in order to execute.
+the JRE has 5 memory areas which are further detailed at question 5.
+the jvm execution engine - this is the actual engin that converts the bytecode into machine code and executes the instructions.
+it has the interpreter, the JIT compiler, the profiler and also the garbage collector.
+ 
+3. jvm can be used across multiple platforms, so that your program will be compatibable on any computer.
+
+4. bytecode is the code that the jvm interpreter convers to machine code in order to run the java program,
+bytecode is not runnable and is reliant on an interpreter to run the code.
+the bytecode can be interpreted and then ran by any jvm regardless of OS, 
+that makes java a platform-independent language.
+
+5. 
+other than the stack and heap, there is also the non-heap memory which consists of:
+
+pc register - it is the address of the current instruction that is executed, each thread has a pc register.
+
+method area -the method area is also global like the heap, in this area the bytecode for each class is loaded and stored. 
+also, it stores the structures of every class such as constructors, methods, method data and so on.
+
+native method stack area - native methods are methods that are written in a different language in order to make the program more efficient.
+whenever there is a call to such method, it enters this stack - where there is no java restrictions.
+
+an important thing to mention is that there is a stack allocated for every thread.
+
+6. the JIT compiler compiles bytecode into native machine code at run time, when repeated call for a methos is made, the macine code that the jit compiler made will be used directly, instead of compiling the method once again. this helps improve the performance of java applications.
